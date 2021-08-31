@@ -1,16 +1,30 @@
+import Categories from './Categories';
+import ProductCard from './ProductCard';
+import styled from 'styled-components';
+
 const Shop = () => {
   return (
-    <section>
+    <ShopContent>
       <div className="container">
-        <h1>Item</h1>
-        <h1>Item</h1>
-        <h1>Item</h1>
-        <h1>Item</h1>
-        <h1>Item</h1>
-        <h1>Item</h1>
+        <Categories />
+        <ProductCard />
+        <ProductCard />
+        <ProductCard />
+        <ProductCard />
+        <ProductCard />
+        <ProductCard />
+        <ProductCard />
+        <ProductCard />
       </div>
-    </section>
+    </ShopContent>
   );
 };
 
+const ShopContent = styled.section`
+  > .container {
+    display: grid;
+    grid-template-columns: 150px repeat(4, 1fr);
+    grid-template-rows: repeat(5, 200px);
+  }
+`;
 export default Shop;

@@ -1,7 +1,7 @@
 import styled from 'styled-components';
 
-const Button = () => {
-  return <MyButton></MyButton>;
+const Button = (props) => {
+  return <MyButton>{props.text}</MyButton>;
 };
 
 const MyButton = styled.button``;

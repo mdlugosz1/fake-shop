@@ -4,7 +4,7 @@ import { Link } from 'react-router-dom';
 const Navigation = () => {
   return (
     <header>
-      <nav className="container">
+      <nav>
         <NavList>
           <NavItem>
             <Link to="/">Home</Link>
@@ -14,10 +14,7 @@ const Navigation = () => {
             <Link to="/shop">Shop</Link>
           </NavItem>
 
-          <NavItem
-            onScroll={() => {
-              console.log('jebac pis');
-            }}>
+          <NavItem>
             <i className="bi bi-cart3"></i>
           </NavItem>
         </NavList>
@@ -31,7 +28,7 @@ const NavList = styled.ul`
   flex-direction: row;
   justify-content: flex-end;
   list-style: none;
-  z-index: 10;
+  margin-right: 10em;
 `;
 
 const NavItem = styled.li`

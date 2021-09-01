@@ -1,14 +1,14 @@
 import styled from 'styled-components';
 
-const Categories = () => {
+const Categories = (props) => {
   return (
     <CategoriesConatiner>
       <h3>Categories</h3>
       <ul>
-        <li>Category</li>
-        <li>Category</li>
-        <li>Category</li>
-        <li>Category</li>
+        <li onClick={() => props.filterItems('all')}>All</li>
+        {props.categories.map((category) => {
+          return <li onClick={() => props.filterItems(category)}>{category}</li>;
+        })}
       </ul>
     </CategoriesConatiner>
   );

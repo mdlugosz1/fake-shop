@@ -53,6 +53,7 @@ const Shop = () => {
                   price={item.price}
                   image={item.image}
                   id={item.id}
+                  key={item.id}
                 />
               );
             })
@@ -64,6 +65,7 @@ const Shop = () => {
                   price={item.price}
                   image={item.image}
                   id={item.id}
+                  key={item.id}
                 />
               );
             })}

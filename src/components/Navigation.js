@@ -1,3 +1,4 @@
+import Cart from './Cart';
 import styled from 'styled-components';
 import { Link } from 'react-router-dom';
 
@@ -15,7 +16,7 @@ const Navigation = () => {
           </NavItem>
 
           <NavItem>
-            <i className="bi bi-cart3"></i>
+            <Cart />
           </NavItem>
         </NavList>
       </nav>

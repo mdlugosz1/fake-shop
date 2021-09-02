@@ -1,8 +1,16 @@
 import Button from './Button';
 import styled from 'styled-components';
 import { Link } from 'react-router-dom';
+import { useContext } from 'react';
+import { CartContext } from './CartContext';
 
 const ProductCard = (props) => {
+  const [items, setItems] = useContext(CartContext);
+
+  const addItemToCart = () => {
+    setItems(items + 1);
+  };
+
   return (
     <Card>
       <div>
@@ -13,7 +21,7 @@ const ProductCard = (props) => {
       </div>
       <h4>{props.title}</h4>
       <h4>{props.price}$</h4>
-      <Button text="Add to cart" />
+      <Button text="Add to cart" action={addItemToCart} />
     </Card>
   );
 };

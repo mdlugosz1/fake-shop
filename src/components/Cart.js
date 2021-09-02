@@ -1,16 +1,15 @@
+import { useContext } from 'react';
+import { CartContext } from './CartContext';
+
 const Cart = () => {
+  const [quantity] = useContext(CartContext);
+
   return (
     <div>
-      <div>
-        <img alt="product" />
-        <button>-</button>
-        <span>0</span>
-        <button>+</button>
-      </div>
-      <h3>Total Price:</h3>
-      <h3>0.00</h3>
-      <button>Checkout</button>
-      <button>Close</button>
+      <i className="bi bi-cart3"></i>
+      {quantity > 0 && <span>{quantity}</span>}
     </div>
   );
 };
+
+export default Cart;

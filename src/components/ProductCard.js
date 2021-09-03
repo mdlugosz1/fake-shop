@@ -1,15 +1,16 @@
 import Button from './Button';
 import styled from 'styled-components';
 import { Link } from 'react-router-dom';
-import { useContext } from 'react';
+import { useContext, useState } from 'react';
 import { CartContext } from './CartContext';
 
 const ProductCard = (props) => {
-  const [items, setItems] = useContext(CartContext);
+  const { addItem } = useContext(CartContext);
 
-  const addItemToCart = () => {
+  /* const addItemToCart = () => {
     setItems(items + 1);
-  };
+  }; */
+  /* console.log(addItem); */
 
   return (
     <Card>
@@ -21,7 +22,7 @@ const ProductCard = (props) => {
       </div>
       <h4>{props.title}</h4>
       <h4>{props.price}$</h4>
-      <Button text="Add to cart" action={addItemToCart} />
+      <Button text="Add to cart" action={() => addItem(props)} />
     </Card>
   );
 };

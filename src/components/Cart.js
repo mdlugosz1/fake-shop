@@ -1,13 +1,17 @@
-import { useContext } from 'react';
+import { useContext, useState } from 'react';
 import { CartContext } from './CartContext';
+import Checkout from './Checkout';
 
 const Cart = () => {
-  const [quantity] = useContext(CartContext);
+  const [isClicked, setIsClicked] = useState(false);
+
+  const { sumItemQuantity } = useContext(CartContext);
 
   return (
-    <div>
+    <div onClick={() => setIsClicked(!isClicked)}>
       <i className="bi bi-cart3"></i>
-      {quantity > 0 && <span>{quantity}</span>}
+      {sumItemQuantity() > 0 && <span>{sumItemQuantity()}</span>}
+      {isClicked && <Checkout />}
     </div>
   );
 };

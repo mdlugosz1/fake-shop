@@ -5,8 +5,12 @@ const CartContext = createContext();
 const CartProvider = (props) => {
   const [boughtItemList, setBoughtItemList] = useState([]);
 
+  const searchForItem = (item) => {
+    return boughtItemList.find((element) => element.addedItem.id === item.id);
+  };
+
   const addItem = (addedItem) => {
-    const findItem = boughtItemList.find((item) => item.addedItem.id === addedItem.id);
+    const findItem = searchForItem(addedItem);
 
     //Add quantity key while adding product if it isn't on the list, increase it by one if it is.
     if (!findItem) {
@@ -14,6 +18,17 @@ const CartProvider = (props) => {
     } else {
       setBoughtItemList((prevState) => {
         findItem.quantity += 1;
+        return [...prevState];
+      });
+    }
+  };
+
+  const removeItem = (itemToRemove) => {
+    const findItem = searchForItem(itemToRemove);
+
+    if (findItem.quantity > 0) {
+      setBoughtItemList((prevState) => {
+        findItem.quantity -= 1;
         return [...prevState];
       });
     }
@@ -31,7 +46,7 @@ const CartProvider = (props) => {
   };
 
   return (
-    <CartContext.Provider value={{ addItem, sumItemQuantity, boughtItemList }}>
+    <CartContext.Provider value={{ addItem, sumItemQuantity, boughtItemList, removeItem }}>
       {props.children}
     </CartContext.Provider>
   );

@@ -5,37 +5,46 @@ import { useState, useEffect } from 'react';
 
 const Shop = () => {
   const [items, setItems] = useState([]);
+  const controller = new AbortController();
+  const signal = controller.signal;
 
   useEffect(() => {
     fetchItems();
+
+    return () => controller.abort();
   }, []);
 
   const fetchItems = async () => {
-    const data = await fetch('https://fakestoreapi.com/products')
+    await fetch('https://fakestoreapi.com/products', signal)
       .then((response) => response.json())
       .then((value) => setItems(value));
+
+    console.log('FETCH ITEMS');
   };
 
   const [categoriesList, setCategoriesList] = useState([]);
 
   useEffect(() => {
     fetchCategories();
+
+    return () => controller.abort();
   }, []);
 
   const fetchCategories = async () => {
-    const categories = await fetch('https://fakestoreapi.com/products/categories')
+    await fetch('https://fakestoreapi.com/products/categories', signal)
       .then((response) => response.json())
       .then((categories) => setCategoriesList(categories));
+
+    console.log('INVOKE');
   };
 
   const [filter, setFilter] = useState('');
 
   const filterItemsByCategory = (cat) => {
-    const newSet = items.filter(({ category }) => category === cat);
-
     if (cat === 'all') {
       setFilter('');
     } else {
+      const newSet = items.filter(({ category }) => category === cat);
       setFilter(newSet);
     }
   };

@@ -3,36 +3,45 @@ import { useContext } from 'react';
 import { CartContext } from './CartContext';
 
 const Checkout = () => {
-  const { boughtItemList } = useContext(CartContext);
+  const { boughtItemList, addItem, removeItem } = useContext(CartContext);
 
   return (
     <div>
       {boughtItemList.map((element) => {
-        return (
-          <div>
-            <img alt="product"></img>
-            <div>
-              <h3>{element.addedItem.title}</h3>
-              <h3>{element.addedItem.price * element.quantity}</h3>
+        if (element.quantity > 0) {
+          return (
+            <div key={element.addedItem.id}>
+              <img alt="product"></img>
               <div>
-                <Button text="-" />
-                <span>{element.quantity}</span>
-                <Button text="+" />
+                <h3>{element.addedItem.title}</h3>
+                <h3>{(element.addedItem.price * element.quantity).toFixed(2)}</h3>
+                <div>
+                  <Button text="-" action={() => removeItem(element.addedItem)} />
+                  <span>{element.quantity}</span>
+                  <Button text="+" action={() => addItem(element.addedItem)} />
+                </div>
               </div>
             </div>
-          </div>
-        );
+          );
+        }
       })}
 
-      <div>
-        <h2>
-          {boughtItemList.reduce((a, b) => {
-            return a + Math.round(b.addedItem.price * b.quantity * 100) / 100;
-          }, 0)}
-        </h2>
-        <Button text="checkout" />
-        <Button text="close" />
-      </div>
+      {boughtItemList.find(({ quantity }) => quantity > 0) ? (
+        <div>
+          <h2>
+            {boughtItemList.reduce((a, b) => {
+              return a + b.addedItem.price * b.quantity;
+            }, 0)}
+          </h2>
+
+          <Button text="checkout" />
+          <Button text="close" />
+        </div>
+      ) : (
+        <div>
+          <p>Looks like your cart is empty!</p>
+        </div>
+      )}
     </div>
   );
 };

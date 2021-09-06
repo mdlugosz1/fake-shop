@@ -59,7 +59,7 @@ const Shop = () => {
                 <ProductCard
                   title={item.title}
                   description={item.description}
-                  price={item.price}
+                  price={item.price.toFixed(2)}
                   image={item.image}
                   id={item.id}
                   key={item.id}
@@ -71,7 +71,7 @@ const Shop = () => {
                 <ProductCard
                   title={item.title}
                   description={item.description}
-                  price={item.price}
+                  price={item.price.toFixed(2)}
                   image={item.image}
                   id={item.id}
                   key={item.id}

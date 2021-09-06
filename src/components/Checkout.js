@@ -5,6 +5,10 @@ import { CartContext } from './CartContext';
 const Checkout = () => {
   const { boughtItemList, addItem, removeItem } = useContext(CartContext);
 
+  const roundToTwo = (num) => {
+    return +(Math.round(num + 'e+2') + 'e-2');
+  };
+
   return (
     <div>
       {boughtItemList.map((element) => {
@@ -29,9 +33,11 @@ const Checkout = () => {
       {boughtItemList.find(({ quantity }) => quantity > 0) ? (
         <div>
           <h2>
-            {boughtItemList.reduce((a, b) => {
-              return a + b.addedItem.price * b.quantity;
-            }, 0)}
+            {roundToTwo(
+              boughtItemList.reduce((a, b) => {
+                return a + b.addedItem.price * b.quantity;
+              }, 0)
+            )}
           </h2>
 
           <Button text="checkout" />

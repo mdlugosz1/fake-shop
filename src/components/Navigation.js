@@ -4,7 +4,7 @@ import { Link } from 'react-router-dom';
 
 const Navigation = () => {
   return (
-    <header>
+    <Header>
       <nav>
         <NavList>
           <NavItem>
@@ -20,9 +20,13 @@ const Navigation = () => {
           </NavItem>
         </NavList>
       </nav>
-    </header>
+    </Header>
   );
 };
+
+const Header = styled.header`
+  background-color: #599599;
+`;
 
 const NavList = styled.ul`
   display: flex;
@@ -35,6 +39,12 @@ const NavList = styled.ul`
 const NavItem = styled.li`
   padding: 2rem;
   z-index: 10;
+  & a {
+    font-size: 18px;
+    text-decoration: none;
+    color: white;
+    text-transform: uppercase;
+  }
 `;
 
 export default Navigation;

@@ -37,7 +37,7 @@ const Checkout = () => {
               boughtItemList.reduce((a, b) => {
                 return a + b.addedItem.price * b.quantity;
               }, 0)
-            )}
+            ).toFixed(2)}
           </h2>
 
           <Button text="checkout" />

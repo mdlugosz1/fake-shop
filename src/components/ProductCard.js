@@ -14,12 +14,12 @@ const ProductCard = (props) => {
 
   return (
     <Card>
-      <div>
+      <ImageContainer>
         <Link to={`/shop/${props.id}`}>
           <ProductImage alt="product" src={props.image} />
         </Link>
         {/* <p>{props.description}</p> */}
-      </div>
+      </ImageContainer>
       <h4>{props.title}</h4>
       <h4>{props.price}$</h4>
       <Button text="Add to cart" action={() => addItem(props)} />
@@ -27,9 +27,22 @@ const ProductCard = (props) => {
   );
 };
 
+const ImageContainer = styled.div`
+  height: 100%;
+  width: 100;
+  border: 1px solid grey;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  & a {
+    height: 70%;
+    width: 70%;
+  }
+`;
+
 const ProductImage = styled.img`
-  height: 100px;
-  width: 100px;
+  height: 100%;
+  width: 100%;
 `;
 
 const Card = styled.div`

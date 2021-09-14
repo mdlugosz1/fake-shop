@@ -25,7 +25,9 @@ const Navigation = () => {
 };
 
 const Header = styled.header`
-  background-color: #599599;
+  background-color: #3a4468;
+  position: sticky;
+  top: 0;
 `;
 
 const NavList = styled.ul`

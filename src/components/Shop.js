@@ -84,11 +84,15 @@ const Shop = () => {
 };
 
 const ShopContent = styled.section`
+  background-color: white;
+  padding-top: 50px;
+  padding-bottom: 150px;
   > .container {
     display: grid;
-    grid-gap: 40px;
-    grid-template-columns: 150px repeat(4, 1fr);
-    grid-template-rows: repeat(5, 200px);
+    column-gap: 60px;
+    row-gap: 150px;
+    grid-template-columns: 125px 75px repeat(3, 1fr);
+    grid-template-rows: repeat(6, 250px);
   }
 `;
 export default Shop;

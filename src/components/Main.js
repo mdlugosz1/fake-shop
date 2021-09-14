@@ -27,7 +27,6 @@ const Main = () => {
 };
 
 const MainSection = styled.section`
-  height: 93vh;
   background-color: #f7f7f7;
 `;
 
